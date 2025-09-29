@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Aplikasi Kasir Sederhana</title>
+</head>
+<body>
+<script>
+  // Minta jumlah jenis barang yang dibeli
+  let jumlahBarang = parseInt(prompt("Masukkan jumlah jenis barang yang ingin dibeli:", "1"));
+
+  let total = 0;
+  let struk = "<h2>Struk Belanja</h2>";
+  struk += "<table border='1' cellpadding='5' cellspacing='0'>";
+  struk += "<tr><th>No</th><th>Nama Barang</th><th>Harga Satuan</th><th>Jumlah</th><th>Total</th></tr>";
+
+  for (let i = 1; i <= jumlahBarang; i++) {
+    let nama = prompt("Masukkan nama barang ke-" + i + ":");
+    let harga = parseInt(prompt("Masukkan harga satuan untuk " + nama + ":", "0"));
+    let qty = parseInt(prompt("Masukkan jumlah " + nama + ":", "1"));
+
+    let subtotal = harga * qty;
+    total += subtotal;
+
+    struk += "<tr>";
+    struk += "<td>" + i + "</td>";
+    struk += "<td>" + nama + "</td>";
+    struk += "<td>Rp " + harga.toLocaleString("id-ID") + "</td>";
+    struk += "<td>" + qty + "</td>";
+    struk += "<td>Rp " + subtotal.toLocaleString("id-ID") + "</td>";
+    struk += "</tr>";
+  }
+
+  struk += "</table>";
+  struk += "<p><strong>Total Belanja: Rp " + total.toLocaleString("id-ID") + "</strong></p>";
+
+  // Input uang bayar
+  let bayar = parseInt(prompt("Total belanja Rp " + total.toLocaleString("id-ID") + ". Masukkan jumlah uang bayar:", total));
+  let kembalian = bayar - total;
+
+  struk += "<p>Uang Bayar: Rp " + bayar.toLocaleString("id-ID") + "</p>";
+  struk += "<p>Kembalian: Rp " + kembalian.toLocaleString("id-ID") + "</p>";
+  struk += "<p>Terima kasih sudah berbelanja!</p>";
+
+  // Tampilkan struk
+  document.write(struk);
+</script>
+</body>
+</html>
